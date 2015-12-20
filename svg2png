@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Start boot2docker if necessary
+b2d=`boot2docker status`
+if [ "$b2d" != "running" ]; then
+  boot2docker up
+fi
+
+docker run --rm -v `pwd`:/svg burke/svg2png $*
